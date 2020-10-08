@@ -1,0 +1,17 @@
+.head{
+    padding: 150px;
+    text-align: center;
+}
+
+.nav{
+    background-color: black;
+}
+
+h1, p {
+    text-align: center;
+}
+
+.footer{
+    text-align: center;
+    margin-top: 250px;
+}
