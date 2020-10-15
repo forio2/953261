@@ -1,0 +1,22 @@
+.head{
+    padding: 150px;
+    text-align: center;
+    background-color: green;
+}
+
+.nav{
+    background-color: greenyellow;
+}
+
+h1, p {
+    text-align: center;
+}
+
+#container{
+    margin-left: 350px;
+    margin-top: 400px;
+}
+
+.errors{
+    color: aqua;
+}
