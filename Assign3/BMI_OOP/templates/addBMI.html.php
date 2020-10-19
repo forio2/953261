@@ -17,7 +17,7 @@
          }
     ?>
     <div class="container">
-        <form action=<?php echo $_SESSION['err'];?> method="POST">
+        <form action="<?php echo $_SESSION['err'];?>" method="POST">
             <div class="form-group">
                 <label for="inputWeight">Weight: </label>
                 <input type="text" class="form-control" id="inputWeight" name="Weight" placeholder="Weight">

@@ -12,9 +12,6 @@
     <table class="table">
         <thead class="thead-dark">
         <tr>
-            <th scope="col">
-                No.
-            </th>
             <th scope="col" >
                 Name
             </th>
@@ -34,11 +31,6 @@
             ?>
             <tbody>
                 <tr>
-                    <td>
-                      <?php 
-                        echo "$x[0]"; 
-                      ?>
-                    </td>
                     <td>
                       <?php 
                         echo " $x[1]"; 

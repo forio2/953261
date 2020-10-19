@@ -14,14 +14,15 @@
         }
 
         function allBMIs(){
-            $pdoStmt = $this->pdo->query("SELECT * FROM BMI WHERE name = {$_SESSION['name']}");
+            $name = $_SESSION['name'];
+            $pdoStmt = $this->pdo->query("SELECT * FROM BMI WHERE name = '$name'");
             $table = $pdoStmt->fetchAll();
             return $table;
         }
         function insertBMIs($weight, $height, $BMI){
-            $isName = "a";
+            $name = $_SESSION['name'];
             $sql = "INSERT INTO BMI (id, name, weight, height, BMI) 
-            VALUES (NULL, '$isName', '$weight', '$height', '$BMI')";
+            VALUES (NULL, '$name', '$weight', '$height', '$BMI')";
             $this->pdo->exec($sql);
         }
 

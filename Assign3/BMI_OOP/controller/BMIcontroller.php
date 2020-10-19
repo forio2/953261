@@ -23,7 +23,7 @@ class BMIcontroller {
     } 
 
     function add(){
-            if(!empty($_POST['submit'])){
+            if(!empty($_POST['Weight'])){
                 $weight = $_POST['Weight'];
                 $height = $_POST['Height'];
                 $BMI = $weight/($height*$height);
