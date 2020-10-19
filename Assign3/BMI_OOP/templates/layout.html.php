@@ -16,14 +16,13 @@
     <a href="index.php?action=list">| BMIs List |&nbsp;</a>
     <a href="index.php?action=add"> Add a new BMI |&nbsp;</a>
     <a href="index.php?action=registerform"> Registration |&nbsp;</a>
-    <a href="index.php?action=loginform"> Sign in |</a>
     <?php
-        $a = 1;
-        if ($a == 1) : ?>
-        <a href="index.php?action=logout">Log out</a>
+        session_start();
+        if (!empty($_SESSION['change'])) : ?>
+        <a href="index.php?action=logout">Log out |</a>
     <?php 
         else : ?>
-        <a href="index.php?action=loginform">Log in</a>
+        <a href="index.php?action=loginform">Log in |</a>
     <?php 
         endif;
     ?>

@@ -14,12 +14,12 @@
         }
 
         function allBMIs(){
-            $pdoStmt = $this->pdo->query('Select * FROM BMI');
+            $pdoStmt = $this->pdo->query("SELECT * FROM BMI WHERE name = {$_SESSION['name']}");
             $table = $pdoStmt->fetchAll();
             return $table;
         }
-        function insertBMIs($name, $weight, $height, $BMI){
-            $isName = "SELECT name FROM user WHERE name = $name";
+        function insertBMIs($weight, $height, $BMI){
+            $isName = "a";
             $sql = "INSERT INTO BMI (id, name, weight, height, BMI) 
             VALUES (NULL, '$isName', '$weight', '$height', '$BMI')";
             $this->pdo->exec($sql);
@@ -33,18 +33,18 @@
 
         function checkLogin($name, $password){
             session_start();
-            $hash = $_SESSION['hashPassword'];
-            $chk = password_verify($password, $hash);
-            $_SESSION['chk'] = $chk;
             $sql = $this->pdo->query("SELECT * FROM user WHERE name = '$name'");
             $table = $sql->fetchAll();
             foreach($table as $x){
+                $hash = $x[3];
+                $chk = password_verify($password, $hash);
+                $_SESSION['chk'] = $chk;
                 if($chk == true && $sql == true){
-                    $_SESSION['sql'] = $x[0];
-                    $_SESSION['change'] = true;
+                    $_SESSION['name'] = $x[2];
+                    $_SESSION['change'] = true; //login
                 }
                 else{
-                    $_SESSION['change'] = false;
+                    $_SESSION['change'] = false; //fail
                 }
             }
         }

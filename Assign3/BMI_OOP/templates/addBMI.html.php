@@ -1,3 +1,5 @@
+<?php
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +9,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
+    <?php
+         if (!empty($_SESSION['change'])){
+             $_SESSION['err'] = "index.php?action=add";
+         }else{
+            $_SESSION['err'] = "index.php?action=loginerror";
+         }
+    ?>
     <div class="container">
-        <form action="" method="POST">
-            <div class="form-group">
-                <label for="inputName">Name: </label>
-                <input type="text" class="form-control" id="inputName" name="Name" placeholder="Name">
-            </div>
+        <form action=<?php echo $_SESSION['err'];?> method="POST">
             <div class="form-group">
                 <label for="inputWeight">Weight: </label>
                 <input type="text" class="form-control" id="inputWeight" name="Weight" placeholder="Weight">
@@ -23,7 +28,9 @@
                 <input type="text" class="form-control" id="inputHeight" name="Height" placeholder="Height">
                 <small id="heightHelp" class="form-text text-muted">in m^2</small>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <?php
+            ?>
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
             <button type="reset" class="btn btn-primary">Reset</button>
         </form>
     </div>
