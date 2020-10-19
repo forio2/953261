@@ -12,7 +12,7 @@
     <?php
         if (!empty($errors)) :?>
         <div class="errors">
-            <p>Your account could not be created, please check the following:</p>
+            <p>Your account could not be login, please check the following:</p>
             <ul>
                 <?php
                     foreach ($errors as $error) :?>
@@ -29,14 +29,13 @@
         ?>
     <div class="container">
     <form action="" method="POST">
-        <label for="email">Your email address</label>
-        <input name="email" id="email" type="text">
         <label for="name">Your name</label>
         <input name="name" id="name" type="text">
         <label for="password">Password</label>
         <input name="password" id="password" type="password">
-        <input type="submit" name="submit" value="Register account">
+        <input type="submit" name="submit" value="Sign in">
     </form>
+    <p>Don't have an account? <a href="index.php?action=registerform">Click here to register an account</a></p>
     </div>
 </body>
 </html>

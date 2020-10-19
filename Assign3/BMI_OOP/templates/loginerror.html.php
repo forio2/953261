@@ -1,0 +1,2 @@
+<h1>You are not logged in</h1>
+<p>You must be logged in view this page. <a href="../public/index.php?action=loginform">Click here to log in</a> or <a href="../public/index.php?action=registerform">Click here to register an account</a></p>

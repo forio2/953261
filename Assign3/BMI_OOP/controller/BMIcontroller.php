@@ -35,7 +35,9 @@ class BMIcontroller {
         if(!empty($_POST['submit'])){
             $email = $_POST['email'];
             $name = $_POST['name'];
+            session_start();
             $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
+            $_SESSION['hashPassword'] = $password;
             if(empty($email)){
                 $valid = false;
                 $errors[] = 'Email cannot be blank';
@@ -56,24 +58,57 @@ class BMIcontroller {
             }
             if($valid == true){
                 $this->pdo->insertUsers($email, $name, $password);
-                header('location: index.php?action=success');
+                header('location: index.php?action=regsuccess');
             }
         }
         include __DIR__.'/../templates/register.html.php';
     }
 
-    function success(){
+    function loginform(){
+        $valid = true;
+        $errors = [];
+        session_start();
+        if(!empty($_POST['submit'])){
+            $name = $_POST['name'];
+            $password = $_POST['password'];
+            if(empty($name)){
+                $valid = false;
+                $errors[] = 'Name cannot be blank';
+            }
+            if(empty($password)){
+                $valid = false;
+                $errors[] = 'Password cannot be blank';
+            }
+            if($valid == true){
+                $this->pdo->checkLogin($name, $password);
+                if($_SESSION['change'] == true){
+                    header('location: index.php?action=loginsuccess');
+                    $_SESSION['navChange'] = true;
+                }else{
+                    header('location: index.php?action=loginerror');
+                    $_SESSION['navChange'] = false;
+                }
+            }
+        }
+        include __DIR__.'/../templates/login.html.php';
+    }
+
+    function regsuccess(){
         include __DIR__.'/../templates/registersuccess.html.php';
     }
 
-    function registeruser(){
-          
-            $title = 'Register an account';
-            ob_start();
-            include __DIR__ . '/../templates/register.html.php';
-            $output = ob_get_clean();
-            return ['output' => $output, 'title' => $title];
-        
+    function loginsuccess(){
+        include __DIR__.'/../templates/loginsuccess.html.php';
+    }
+
+    function loginerror(){
+        include __DIR__.'/../templates/loginerr.html.php';
+    }
+
+    function logout(){
+        session_start();
+        session_destroy();
+        header("location: index.php");
     }
 }
 ?>

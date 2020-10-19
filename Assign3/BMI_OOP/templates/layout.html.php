@@ -17,6 +17,16 @@
     <a href="index.php?action=add"> Add a new BMI |&nbsp;</a>
     <a href="index.php?action=registerform"> Registration |&nbsp;</a>
     <a href="index.php?action=loginform"> Sign in |</a>
+    <?php
+        $a = 1;
+        if ($a == 1) : ?>
+        <a href="index.php?action=logout">Log out</a>
+    <?php 
+        else : ?>
+        <a href="index.php?action=loginform">Log in</a>
+    <?php 
+        endif;
+    ?>
     </nav>
 </body>
 </html>

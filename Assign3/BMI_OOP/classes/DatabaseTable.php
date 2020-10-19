@@ -30,6 +30,23 @@
             VALUES (NULL, '$email', '$name', '$password')";
             $this->pdo->exec($sql);
         }
-        
+
+        function checkLogin($name, $password){
+            session_start();
+            $hash = $_SESSION['hashPassword'];
+            $chk = password_verify($password, $hash);
+            $_SESSION['chk'] = $chk;
+            $sql = $this->pdo->query("SELECT * FROM user WHERE name = '$name'");
+            $table = $sql->fetchAll();
+            foreach($table as $x){
+                if($chk == true && $sql == true){
+                    $_SESSION['sql'] = $x[0];
+                    $_SESSION['change'] = true;
+                }
+                else{
+                    $_SESSION['change'] = false;
+                }
+            }
+        }
     }
 ?>
